@@ -2,17 +2,15 @@ package CyberclickTwo;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import org.apache.commons.lang.StringUtils;
 
 public class PolicyCompanyOne extends PasswordHandler {
 
     @Override
     public boolean isValidPassword(String line) {
-        Character l = line.charAt(line.indexOf(":") - 1);
-        String letter = Character.toString(l);
-        String password = line.substring(line.lastIndexOf(":") + 1);
 
-        int letterCount = StringUtils.countMatches(password, letter);
+        Character letter = line.charAt(line.indexOf(":") - 1);
+        String password = line.substring(line.lastIndexOf(":") + 1);
+        int letterCount = countMatches(password, letter);
 
         int min = Integer.parseInt(line.substring(0, line.indexOf("-")));
 
@@ -23,8 +21,19 @@ public class PolicyCompanyOne extends PasswordHandler {
             return true;
         } else {
             return false;
-
         }
+    }
+
+    private int countMatches(String password, char letter) {
+
+        char[] passwordChar = password.toCharArray();
+        int count = 0;
+        for (int i = 0; i < passwordChar.length; i++) {
+            if (passwordChar[i] == letter) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
@@ -34,7 +43,7 @@ public class PolicyCompanyOne extends PasswordHandler {
         for (int i = 0; i < 100; i++) {
 
             if (isValidPassword(input.get(i))) {
-                count = count + 1;
+                count++;
             }
 
         }

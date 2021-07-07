@@ -9,13 +9,10 @@ public class Main {
         PasswordHandler policy;
 
         policy = new PolicyCompanyOne();
-
         policy.countValidPasswords();
 
         policy = new PolicyCompanyTwo();
-
         policy.countValidPasswords();
-
     }
 
 }
