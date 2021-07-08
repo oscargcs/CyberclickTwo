@@ -40,7 +40,7 @@ public class PolicyCompanyOne extends PasswordHandler {
     public int countValidPasswords() throws FileNotFoundException {
         ArrayList<String> input = readInput("input.txt.txt");
         int count = 0;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < input.size(); i++) {
 
             if (isValidPassword(input.get(i))) {
                 count++;
